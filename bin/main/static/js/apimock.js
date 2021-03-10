@@ -34,6 +34,28 @@ var apimock = (function () {
         },
       ],
     },
+    {
+      author: "JhonConnor",
+      name: "torre",
+      points: [
+        {
+          x: 0,
+          y: 0,
+        },
+        {
+          x: 50,
+          y: 50,
+        },
+        {
+          x: 100,
+          y: 100,
+        },
+        {
+          x: 200,
+          y: 200,
+        },
+      ],
+    },
   ];
 
   mockdata["LexLuthor"] = [

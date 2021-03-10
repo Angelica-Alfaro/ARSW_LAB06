@@ -1,6 +1,7 @@
 var Module = (function () {
   var _blueprints;
   var author;
+  var url = "js/apiclient.js";
 
   const _toObject = function (author, mockdata) {
     _blueprints = [];
@@ -22,18 +23,39 @@ var Module = (function () {
   const _completeTable = function () {
     $(document).ready(function () {
       _blueprints.map(function (bp) {
+        _name = bp.name;
         let fields =
           "<tr><td>" +
           bp.name +
           "</td><td>" +
           bp.numPoints +
-          "</td><td><input type='button' value=Open' onclick='getBlueprintsByNameAndAuthor(bp.name)'></td></tr>";
+          "</td><td><input id='boton' type='button' value='Open' onclick=" +
+          'Module.getBlueprintsByNameAndAuthor("' +
+          bp.name +
+          '")' +
+          "></td></tr>";
         $("table").append(fields);
       });
     });
   };
 
-  const _clearTable = function () {
+  const _drawInCanvas = function (name, blueprint) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    _cleanCanvas(c, ctx);
+    let blueprintPoints = blueprint.points.slice(1, blueprint.points.length);
+    let initx = blueprint.points[0].x;
+    let inity = blueprint.points[0].y;
+    blueprintPoints.forEach((element) => {
+      ctx.moveTo(initx, inity);
+      ctx.lineTo(element.x, element.y);
+      ctx.stroke();
+      initx = element.x;
+      inity = element.y;
+    });
+  };
+
+  const _cleanTable = function () {
     $(document).ready(function () {
       $("table")
         .find("td")
@@ -44,29 +66,25 @@ var Module = (function () {
     document.getElementById("lbTotal").innerHTML = "Total user points: ";
   };
 
-  const _drawInCanvas = function (name, blueprint) {
-    let pointsBlue = blueprint.points;
-    for (let point in pointsBlue) {
-      var c = document.getElementById("myCanvas");
-      var ctx = c.getContext("2d");
-      ctx.moveTo(0, 0);
-      ctx.lineTo(300, 300);
-      ctx.stroke();
-    }
+  const _cleanCanvas = function (c, ctx) {
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.beginPath();
   };
 
   const getBlueprintsByAuthor = function () {
-    _clearTable();
-    $.getScript("js/apimock.js", function () {
+    _cleanTable();
+    $.getScript(url, function () {
       author = $("#authorName").val();
       document.getElementById("lbAuthor").innerHTML = author + " blueprints:";
-      apimock.getBlueprintsByAuthor(author, _toObject);
+      apiclient.getBlueprintsByAuthor(author, _toObject);
     });
   };
 
   const getBlueprintsByNameAndAuthor = function (blueprintName) {
-    $.getScript("js/apimock.js", function () {
-      apimock.getBlueprintsByNameAndAuthor(
+    document.getElementById("lbName").innerHTML =
+      "Current Blueprint: " + blueprintName;
+    $.getScript(url, function () {
+      apiclient.getBlueprintsByNameAndAuthor(
         blueprintName,
         author,
         _drawInCanvas
@@ -76,5 +94,6 @@ var Module = (function () {
 
   return {
     getBlueprintsByAuthor: getBlueprintsByAuthor,
+    getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor,
   };
 })();
