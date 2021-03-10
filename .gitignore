@@ -22,3 +22,11 @@ dist/
 nbdist/
 .nb-gradle/
 /nbproject/
+
+# Visual Studio Code
+.vscode
+bin
+
+# Gradle
+.gradle
+/build
