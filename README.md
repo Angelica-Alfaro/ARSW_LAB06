@@ -13,7 +13,18 @@
 * Al seleccionar uno de los planos, se debe mostrar el dibujo del mismo. Por ahora, el dibujo será simplemente una secuencia de segmentos de recta realizada en el mismo orden en el que vengan los puntos.
 
 
-## Ajustes Backend
+## 📍 Ajustes Backend
+
+### 💡 Instrucciones para compilar
+
+Es necesario tener instalado **gradle** en el equipo que desee ejecutar la aplicación.
+
+***Para compilar***
+```
+>  gradle build
+>  gradle :bootRun
+```
+
 
 1. Incluya dentro de las dependencias de Gradle (build.gradle) los 'webjars' de jQuery y Bootstrap (esto permite tener localmente dichas librerías de JavaScript al momento de construír el proyecto):
 
@@ -26,7 +37,7 @@
     }               
     ```
 
-## Front-End - Vistas
+## 📍 Front-End - Vistas
 
 1. Cree el directorio donde residirá la aplicación JavaScript. Como se está usando SpringBoot, la ruta para poner en el mismo contenido estático (páginas Web estáticas, aplicaciones HTML5/JS, etc) es:  
 
@@ -56,8 +67,15 @@
     http://localhost:8080/index.html
     ```
     2. Al abrir la consola de desarrollador del navegador, NO deben aparecer mensajes de error 404 (es decir, que las librerías de JavaScript se cargaron correctamente).
+    <!DOCTYPE html>
+    <html>
+    	<head></head>
+    	<body>
+	 <img src="https://github.com/Angelica-Alfaro/ARSW_LAB06/blob/master/img/frontEnd-Vista.png" alt="ER" width="700"/>
+    	</body>
+    </html>
 
-## Front-End - Lógica
+## 📍 Front-End - Lógica
 
 1. Ahora, va a crear un Módulo JavaScript que, a manera de controlador, mantenga los estados y ofrezca las operaciones requeridas por la vista. Para esto tenga en cuenta el [patrón Módulo de JavaScript](https://toddmotto.com/mastering-the-module-pattern/), y cree un módulo en la ruta static/js/app.js .
 
@@ -88,7 +106,15 @@
 
 6. Verifique el funcionamiento de la aplicación. Inicie el servidor, abra la aplicación HTML5/JavaScript, y rectifique que al ingresar un usuario existente, se cargue el listado del mismo.
 
-## Para la próxima semana
+<!DOCTYPE html>
+   <html>
+     <head></head>
+      <body>
+       <img src="https://github.com/Angelica-Alfaro/ARSW_LAB06/blob/master/img/frontEndFinal.png" alt="ER" width="700"/>
+     </body>
+</html>
+
+## 📍 Para la próxima semana
 
 8. A la página, agregue un [elemento de tipo Canvas](https://www.w3schools.com/html/html5_canvas.asp), con su respectivo identificador. Haga que sus dimensiones no sean demasiado grandes para dejar espacio para los otros componentes, pero lo suficiente para poder 'dibujar' los planos.
 
@@ -102,5 +128,13 @@
 12. Una vez funcione la aplicación (sólo front-end), haga un módulo (llámelo 'apiclient') que tenga las mismas operaciones del 'apimock', pero que para las mismas use datos reales consultados del API REST. Para lo anterior revise [cómo hacer peticiones GET con jQuery](https://api.jquery.com/jquery.get/), y cómo se maneja el esquema de _callbacks_ en este contexto.
 
 13. Modifique el código de app.js de manera que sea posible cambiar entre el 'apimock' y el 'apiclient' con sólo una línea de código.
+
+<!DOCTYPE html>
+   <html>
+     <head></head>
+      <body>
+       <img src="https://github.com/Angelica-Alfaro/ARSW_LAB06/blob/master/img/VistaFinal.png" alt="ER" width="700"/>
+     </body>
+</html>
 
 14. Revise la [documentación y ejemplos de los estilos de Bootstrap](https://v4-alpha.getbootstrap.com/examples/) (ya incluidos en el ejercicio), agregue los elementos necesarios a la página para que sea más vistosa, y más cercana al mock dado al inicio del enunciado.
