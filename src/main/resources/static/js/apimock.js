@@ -18,6 +18,10 @@ var apimock = (function () {
                 {
                     x: 45,
                     y: 25
+                },
+                {
+                    x: 50,
+                    y: 60
                 }
             ]
         },
@@ -32,6 +36,24 @@ var apimock = (function () {
                 {
                     x: 40,
                     y: 45
+                },
+                {
+                    x: 15,
+                    y: 15
+                }
+            ]
+        },
+        {
+            author: "JhonConnor",
+            name: "car",
+            points: [
+                {
+                    x: 60,
+                    y: 15
+                },
+                {
+                    x: 20,
+                    y: 15
                 }
             ]
         }
@@ -49,6 +71,24 @@ var apimock = (function () {
                 {
                     x: 70,
                     y: 75
+                }
+            ]
+        },
+        {
+            author: 'LexLuthor',
+            name: 'salt',
+            points: [
+                {
+                    x: 20,
+                    y: 25
+                },
+                {
+                    x: 30,
+                    y: 15
+                },
+                {
+                    x: 40,
+                    y: 45
                 }
             ]
         }
