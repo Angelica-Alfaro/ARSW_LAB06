@@ -17,6 +17,19 @@
         padding: 10px;
         text-align: left;
       }
+      canvas.myPanel{
+        margin-left: 100px; 
+      }
+      button.mybutton {
+        background-color: #4caf50; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+     }
     </style>
     <title>Blueprints</title>
     <meta charset="UTF-8" />
@@ -39,11 +52,11 @@
           <h1>Blueprints</h1>
           <form>
             <p>
-              <input name="Author" type="text" id="authorName" />
+              Author: <input name="Author" type="text" id="authorName" />
               <button
                 type="button"
                 id="getBlueprints"
-                onclick="Module.getBlueprintsByAuthor()"
+                onclick="Module.getBlueprintsByAuthor()" class="mybutton"
               >
                 Get Blueprints
               </button>
@@ -73,6 +86,7 @@
         </div>
         <div class="col-lg-5">
           <h2 style="text-align: center">Current Blueprint:</h2>
+          <canvas id="myCanvas" width="500" height="440" style="border:1px solid black" class="myPanel"></canvas>
         </div>
       </div>
     </div>
