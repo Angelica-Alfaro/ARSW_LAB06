@@ -1,5 +1,6 @@
 var Module = (function () {
   var _blueprints;
+  var author;
 
   const _toObject = function (author, mockdata) {
     _blueprints = [];
@@ -22,7 +23,11 @@ var Module = (function () {
     $(document).ready(function () {
       _blueprints.map(function (bp) {
         let fields =
-          "<tr><td>" + bp.name + "</td><td>" + bp.numPoints + "</td></tr>";
+          "<tr><td>" +
+          bp.name +
+          "</td><td>" +
+          bp.numPoints +
+          "</td><td><input type='button' value=Open' onclick='getBlueprintsByNameAndAuthor(bp.name)'></td></tr>";
         $("table").append(fields);
       });
     });
@@ -39,13 +44,33 @@ var Module = (function () {
     document.getElementById("lbTotal").innerHTML = "Total user points: ";
   };
 
+  const _drawInCanvas = function (name, blueprint) {
+    let pointsBlue = blueprint.points;
+    for (let point in pointsBlue) {
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.moveTo(0, 0);
+      ctx.lineTo(300, 300);
+      ctx.stroke();
+    }
+  };
+
   const getBlueprintsByAuthor = function () {
     _clearTable();
-
     $.getScript("js/apimock.js", function () {
       author = $("#authorName").val();
       document.getElementById("lbAuthor").innerHTML = author + " blueprints:";
       apimock.getBlueprintsByAuthor(author, _toObject);
+    });
+  };
+
+  const getBlueprintsByNameAndAuthor = function (blueprintName) {
+    $.getScript("js/apimock.js", function () {
+      apimock.getBlueprintsByNameAndAuthor(
+        blueprintName,
+        author,
+        _drawInCanvas
+      );
     });
   };
 
